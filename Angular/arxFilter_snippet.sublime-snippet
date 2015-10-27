@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+
+angular.module('arxivar').filter('${1:this}', ['\$rootScope', '\$scope', '\$log', function (\$rootScope, \$scope, \$log) {
+ 	return function(input, ${2}) {
+ 		${3}
+	};
+}]);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>arxf</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

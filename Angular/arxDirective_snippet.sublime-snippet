@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+
+angular.module('arxivar').directive('${1:this}', ['\$log', function (\$log) {
+            return {
+                restrict: '${2:E}',
+                replace: ${3:true},
+                scope: {
+                	${4}
+                },
+                templateUrl: 'app/directives/${5}',
+                link: function(scope, element, attrs, ctrl) {
+                	${6}
+                }
+            };
+}]);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>arxd</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,63 @@
+<snippet>
+	<content><![CDATA[
+	
+angular.module('arxivar').factory('${1}Datasource', ['\$rootScope', '\$log', 'arxivarConfig', function (\$rootScope, \$log, arxivarConfig) {
+
+    var crudServiceBaseUrl = arxivarConfig.rootApi + '${2}';
+
+    var getDataSource = function () {
+        return new kendo.data.DataSource({
+            transport: {
+                read: function (options, queryStringFilters) {
+                    var paramMap = queryStringFilters || {};
+                    $http.get(crudServiceBaseUrl, {
+                        params: paramMap,
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    }).success(function (response) {
+                        options.success(response);
+                    });
+                },
+                update: function (options) {
+                    return $http.put(crudServiceBaseUrl, options.data);
+                },
+                destroy: function (options) {
+                    return $http.delete(crudServiceBaseUrl + options.data;
+                },
+                insert: function (options) {
+                    return $http.post(crudServiceBaseUrl, options.data);
+                }
+            },
+            // batch: false,
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            pageSize: 10,
+            filter: {}, 
+            sort: {}, 
+            schema: {
+                data: function (data) {
+                    return data.value;
+                },
+                total: function (data) {
+                    // return data["odata.count"]; 
+                    return data.value.length;
+                },
+                model: profiliModel
+            },
+            error: function (e) {
+                $log.error(e.xhr.responseText);
+            }
+        });
+    };
+
+    return {
+        getDataSource: getDataSource
+    };
+
+}]);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>arxDs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

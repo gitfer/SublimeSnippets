@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+
+angular.module('arxivar').controller('${1:this}Ctrl', ['\$rootScope', '\$scope', '\$log', function (\$rootScope, \$scope, \$log) {
+	${3}
+}]);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>arxc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
